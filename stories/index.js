@@ -10,7 +10,8 @@ import DayList from "/Users/macbar/Documents/LHL/second_try/w6/scheduler/src/com
 import InterviewerListItem from "/Users/macbar/Documents/LHL/second_try/w6/scheduler/src/components/InterviewerListItem";
 import InterviewerList from "/Users/macbar/Documents/LHL/second_try/w6/scheduler/src/components/InterviewerList";
 import Appointment from "components/Appointment/index.js";
-
+import Header from "components/Appointment/Header.js";
+import Empty from "components/Appointment/Empty.js";
 
 storiesOf("Button", module)
   .addParameters({
@@ -175,9 +176,13 @@ storiesOf("Button", module)
       ));
 
 //src/Components/Appointment/index.js
-storiesOf("Appointment", module)
+storiesOf("Appointment", "Header", module)
   .addParameters({
     backgrounds: [{ name: "white", value: "#fff", default: true }]
   })
   .add("Appointment", () => <Appointment />)
-  .add("Appointment with Time", () => <Appointment time="12pm" />);
+  .add("Appointment with Time", () => <Appointment time="12pm" />)
+  .add("Header", () => <Header time="12PM" />)
+  // .add("Empty", () => {<Empty setDay={action("setDay")}/>})
+  .add("Empty", () => <Empty onAdd={action("onAdd")}/>);
+  
