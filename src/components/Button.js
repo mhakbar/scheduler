@@ -14,7 +14,7 @@ export default function Button(props) {
    //    buttonClass += " button--danger";
    //  }
 
-   const buttonClass = classNames("button", {" button--confirm":props.confirm, " button--danger": props.danger});
+   const buttonClass = classNames("button", {" button--confirm":props.confirm, " button--danger": props.danger });
 
    return <button onClick={props.onClick} disabled={props.disabled} className={buttonClass}>{props.children}</button>;
 }
