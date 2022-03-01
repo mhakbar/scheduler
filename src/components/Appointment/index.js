@@ -1,18 +1,39 @@
 import "./styles.scss";
 import React from "react";
+import Header from './Header'
+import Show from './Show'
+import Empty from './Empty'
 
 
 
 export default function Appointment(props){
-const {time} = props;
+// const {time} = props;
 
 
-let outputString = 'No appointmnet';
+// let outputString = 'No appointmnet';
 
-if (time) {
-  outputString = `Appoint at ${time}.`
-}
+// if (time) {
+//   outputString = `Appoint at ${time}.`
+// }
+console.log("props:",props)
 
-return <article className="appointment">{outputString}</article>
+const { interview, time } = props
+
+  return (
+    <article className="appointment">
+      <Header time={time} />
+      {interview ? (
+        <Show
+        student = {interview.student} 
+        interviewer = {interview.interviewer}
+        
+        />
+      ) : (
+        <Empty />
+      )}
+    </article>
+  )
+
+// return <article className="appointment">{outputString}</article>
 
 };
