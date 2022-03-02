@@ -1,5 +1,6 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import "components/Application.scss";
 import DayList from "./DayList";
 import "components/Appointment";
@@ -44,26 +45,27 @@ const appointments = [
 ];
 export default function Application(props) {
 
-  const [value, onChange] = useState('Monday');
-  console.log(value);
+  // const [value, onChange] = useState('Monday');
+  // console.log(value);
+  const [days, setDays] = useState([]);
 
-  const days = [
-    {
-      id: 1,
-      name: "Monday",
-      spots: 2,
-    },
-    {
-      id: 2,
-      name: "Tuesday",
-      spots: 5,
-    },
-    {
-      id: 3,
-      name: "Wednesday",
-      spots: 0,
-    },
-  ];
+  // const days = [
+  //   {
+  //     id: 1,
+  //     name: "Monday",
+  //     spots: 2,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Tuesday",
+  //     spots: 5,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Wednesday",
+  //     spots: 0,
+  //   },
+  // ];
   return (
     
     <main className="layout">
@@ -72,8 +74,8 @@ export default function Application(props) {
         <img className="sidebar--centered" src="images/logo.png" alt="Interview Scheduler"/>
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-        <DayList days={days} day={value} 
-        setDay={onChange}/>
+        <DayList days={days} day={days} 
+        setDay={setDays}/>
 
 
         </nav>
