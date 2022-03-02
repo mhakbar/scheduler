@@ -5,6 +5,7 @@ import "components/Application.scss";
 import DayList from "./DayList";
 import "components/Appointment";
 import Appointment from "components/Appointment";
+
 const appointments = [
   {
     id: 1,
@@ -43,11 +44,42 @@ const appointments = [
     time: "4pm",
   }
 ];
+
+
 export default function Application(props) {
 
   // const [value, onChange] = useState('Monday');
   // console.log(value);
-  const [days, setDays] = useState([]);
+  // const [days, setDays] = useState([]);  
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    appointments: {}
+  });
+
+  const setDay = day => setState({...state, day});
+  const setDays = days => setState(prev => ({...prev, days}));
+
+
+
+  const baseURL = "http://localhost:8001/api/";
+  
+
+  useEffect(() => {
+    axios.get(`${baseURL}days`)
+    .then((response) => {
+      console.log(response.data);
+      setDays(response.data);
+    })
+    .catch((err) => {
+      console.log('Error: ', err);
+    })
+      .then((response) => setDays(response.data))
+      .catch((err) => {
+        console.log('Error: ', err);
+      })
+  }, [])
+
 
   // const days = [
   //   {
@@ -74,8 +106,8 @@ export default function Application(props) {
         <img className="sidebar--centered" src="images/logo.png" alt="Interview Scheduler"/>
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-        <DayList days={days} day={days} 
-        setDay={setDays}/>
+        <DayList days={state.days} value={state.day} 
+        onChange={setDay}/>
 
 
         </nav>
