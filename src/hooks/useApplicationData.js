@@ -25,6 +25,7 @@ const bookInterview = (id, interview) => {
   return axios
     .put(`http://localhost:8001/api/appointments/${id}`, { interview })
     .then(res => {
+      updateSpots(id, false)
       setState(prev => {
         return { ...prev, appointments }
       })
@@ -44,10 +45,26 @@ const cancelInterview = id => {
   return axios
     .delete(`http://localhost:8001/api/appointments/${id}`)
     .then(res => {
+      updateSpots(id, true)
       setState(prev => {
         return { ...prev, updatedAppointments }
       })
     })
+}
+
+const updateSpots = (id, increment = true) => {
+  const day = state.days.filter((day, index) =>
+    day.appointments.includes(id)
+  )[0]
+  increment ? (day.spots += 1) : (day.spots -= 1)
+
+  const days = [...state.days]
+  const dayIndex = day.id - 1
+  days[dayIndex] = day
+
+  setState(prev => {
+    return { ...prev, days }
+  })
 }
 
   return {
