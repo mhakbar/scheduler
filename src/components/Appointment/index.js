@@ -22,7 +22,7 @@ export default function Appointment(props){
 // }
 console.log("props:",props)
 
-const { interview, time } = props
+const { interview, time, interviewers } = props
 
 const { mode, transition, back } = useVisualMode(
   props.interview ? SHOW : EMPTY
@@ -41,8 +41,9 @@ const { mode, transition, back } = useVisualMode(
         //   />
         // )}
         <Show
-        student = {interview.student} 
-        interviewer = {interview.interviewer}
+        // student = {interview.student} 
+        // interviewer = {interview.interviewer}
+        {...interview}
         onEdit={() => console.log('clicked onEdit')}
         onDelete={() => console.log('clicked onDelete')}        
         />
@@ -51,7 +52,8 @@ const { mode, transition, back } = useVisualMode(
       )}
       {mode === CREATE && (
         <Form 
-        interviewers = {[]}
+        // interviewers = {[]}
+        interviewers={interviewers}
         onSave={() => console.log('clicked onSave')}
         onCancel={() => back()}
         />
