@@ -3,10 +3,13 @@ import React from "react";
 import Header from './Header'
 import Show from './Show'
 import Empty from './Empty'
+import useVisualMode from "hooks/useVisualMode";
 
 
 
 export default function Appointment(props){
+  const EMPTY = "EMPTY";
+  const SHOW = "SHOW";
 // const {time} = props;
 
 
@@ -19,17 +22,29 @@ console.log("props:",props)
 
 const { interview, time } = props
 
+const { mode, transition, back } = useVisualMode(
+  props.interview ? SHOW : EMPTY
+);
+
   return (
     <article className="appointment">
       <Header time={time} />
-      {interview ? (
+      {/* {interview ? ( */}
+        {mode === EMPTY && <Empty onAdd={() => console.log("Clicked onAdd")} />}
+        {mode === SHOW && (
+        //   <Show
+        //     student={props.interview.student}
+        //     interviewer={props.interview.interviewer}
+        //   />
+        // )}
         <Show
         student = {interview.student} 
         interviewer = {interview.interviewer}
-        
+        onEdit={() => console.log('clicked onEdit')}
+        onDelete={() => console.log('clicked onDelete')}        
         />
-      ) : (
-        <Empty />
+      // {/* ) : (
+      //   <Empty /> */}
       )}
     </article>
   )

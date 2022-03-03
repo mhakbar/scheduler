@@ -6,6 +6,7 @@ import DayList from "./DayList";
 import "components/Appointment";
 import Appointment from "components/Appointment";
 import { getAppointmentsForDay, getInterview } from 'helpers/selectors';
+import useVisualMode from "hooks/useVisualMode";
 
 // const appointments = [
 //   {
@@ -51,7 +52,7 @@ export default function Application(props) {
   // const [value, onChange] = useState('Monday');
   // console.log(value);
   // const [days, setDays] = useState([]);  
-  const [state, setState] = useState({
+  const [state, setState] = useState({ 
     day: "Monday",
     days: [],
     appointments: {},
