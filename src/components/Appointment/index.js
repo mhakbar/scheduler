@@ -4,6 +4,8 @@ import Header from './Header'
 import Show from './Show'
 import Empty from './Empty'
 import Form from './Form'
+import Status from './Status'
+import Confirm from './Confirm'
 import useVisualMode from "hooks/useVisualMode";
 
 
@@ -12,6 +14,11 @@ export default function Appointment(props){
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
+  const SAVING = 'SAVING';
+  const CONFIRM = 'CONFIRM';
+  const EDIT = 'EDIT'
+
+  
 // const {time} = props;
 
 
@@ -24,7 +31,7 @@ export default function Appointment(props){
 
 console.log("props:",props)
 
-const { interview, time, interviewers, bookInterview, id } = props
+const { interview, time, interviewers, bookInterview, id, cancelInterview } = props
 
 const { mode, transition, back } = useVisualMode(
   props.interview ? SHOW : EMPTY
@@ -33,12 +40,19 @@ const { mode, transition, back } = useVisualMode(
 function save(name, interviewer) {
   const interview = {
     student: name,
-    interviewer
-  };
-  bookInterview(id, interview);
-  transition(SHOW);
+    interviewer,
+  }
+  transition(SAVING)
+  bookInterview(id, interview).then(() => transition(SHOW))
+}
+const remove = id => {
+  transition(SAVING)
+  cancelInterview(id).then(() => transition(EMPTY))
 }
 
+const confirm = id => {
+  transition(CONFIRM)
+}
   return (
     <article className="appointment">
       <Header time={time} />
@@ -46,29 +60,38 @@ function save(name, interviewer) {
         {mode === EMPTY && <Empty onAdd={() => 
           transition(CREATE)/*console.log("Clicked onAdd")*/} />}
         {mode === SHOW && (
-        //   <Show
-        //     student={props.interview.student}
-        //     interviewer={props.interview.interviewer}
-        //   />
-        // )}
         <Show
-        // student = {interview.student} 
-        // interviewer = {interview.interviewer}
         {...interview}
-        onEdit={() => console.log('clicked onEdit')}
-        onDelete={() => console.log('clicked onDelete')}        
+        onEdit={() => transition(EDIT)}
+        onDelete={() => confirm()}        
         />
       // {/* ) : (
       //   <Empty /> */}
       )}
       {mode === CREATE && (
         <Form 
-        // interviewers = {[]}
         interviewers={interviewers}
-        // onSave={() => console.log('clicked onSave')}
         onSave={save}
         onCancel={() => back()}
         />
+      )}
+      {mode === SAVING && (
+        <Status message={'SAVING...'} />
+        
+      )}
+      {mode === CONFIRM && (
+        <Confirm
+          message={'Are you sure you would like to delete?'}
+          onConfirm={() => remove(id)}
+          onCancel={() => transition(SHOW)}
+        />
+      )}
+       {mode === EDIT && (
+        <Form interviewers={interviewers} 
+        onSave={save} 
+        onCancel={back} 
+        student={interview.student} 
+        interviewer={interview.interviewer.id} />
       )}
     </article>
   )
