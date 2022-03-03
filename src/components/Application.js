@@ -48,6 +48,18 @@ import useVisualMode from "hooks/useVisualMode";
 // ];
 
 export default function Application(props) {
+
+  function bookInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    }
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    }
+    setState({...state, appointments})
+  };
   
   // const [value, onChange] = useState('Monday');
   // console.log(value);
@@ -114,7 +126,9 @@ export default function Application(props) {
     id={appointment.id} 
     time={appointment.time} 
     interview={interview}
-    interviewers={dailyInterviewers}/>
+    interviewers={dailyInterviewers}
+    bookInterview={bookInterview}
+    />
           );
   });
 

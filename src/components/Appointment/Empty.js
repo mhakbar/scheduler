@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Empty(props) {
-  const {onAdd, setDay, time} = props
+  const {onAdd, setDay, time, bookInterview} = props
 
 return(
 <main className="appointment__add">

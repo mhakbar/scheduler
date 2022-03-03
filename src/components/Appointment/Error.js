@@ -2,7 +2,7 @@ import React from "react";
 
 
 export default function Erros(props) {
-  const {message, onClose, time} = props;
+  const {message, onClose, time, bookInterview} = props;
 
   return(
   <main className="appointment__card appointment__card--error">

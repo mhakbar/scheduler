@@ -2,7 +2,7 @@ import React from "react";
 
 
 export default function Status(props) {
-  const {message, time} = props;
+  const {message, time, bookInterview} = props;
 
 return(
 <main className="appointment__card appointment__card--status">
