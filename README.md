@@ -4,6 +4,14 @@
 
 Install dependencies with `npm install`.
 
+## Dependencies
+
+- axios
+- classnames
+- node-sass
+- react
+- sass
+
 ## Running Webpack Development Server
 
 ```sh
@@ -21,3 +29,21 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## Final Product
+
+!["screenshot Main Scheduler Page page"](https://github.com/mhakbar/scheduler/blob/master/images/appointment-created.png?raw=true)
+
+!["Creating an appoitnment"](https://github.com/mhakbar/scheduler/blob/master/images/creating-appointment.png?raw=true)
+
+!["Appointment created"](https://github.com/mhakbar/scheduler/blob/master/images/appointment-created.png?raw=true)
+
+!["Editing an apppointment"](https://github.com/mhakbar/scheduler/blob/master/images/details.png?raw=true)
+
+
+
+
+## Getting Started
+
+- Install all dependencies (using the `npm install` command).
+- Run the development web server using the `node express_server.js` command.
