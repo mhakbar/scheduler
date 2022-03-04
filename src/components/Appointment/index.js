@@ -7,7 +7,7 @@ import Form from './Form'
 import Status from './Status'
 import Confirm from './Confirm'
 import useVisualMode from "hooks/useVisualMode";
-
+import PropTypes from 'prop-types';
 
 
 export default function Appointment(props){

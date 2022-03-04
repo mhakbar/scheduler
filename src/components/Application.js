@@ -7,7 +7,8 @@ import "components/Appointment";
 import Appointment from "components/Appointment";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from 'helpers/selectors';
 import useVisualMode from "hooks/useVisualMode";
-import useApplicationData from 'hooks/useApplicationData'
+import useApplicationData from 'hooks/useApplicationData';
+import PropTypes from 'prop-types';
 
 
 export default function Application(props) {
