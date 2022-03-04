@@ -1,5 +1,9 @@
 # Interview Scheduler
 
+## Introduction
+
+Scheduler is a modern client application using the React view library. Using this app users can book new interview, edit existing interviews and cancel an interview. 
+
 ## Setup
 
 Install dependencies with `npm install`.
@@ -30,7 +34,7 @@ npm test
 npm run storybook
 ```
 
-## Final Product
+## Final Product (Screenshots)
 
 !["screenshot Main Scheduler Page page"](https://github.com/mhakbar/scheduler/blob/master/images/appointment-created.png?raw=true)
 
