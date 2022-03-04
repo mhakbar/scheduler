@@ -33,15 +33,15 @@ storiesOf("Button", module)
     </Button>
   ));
 
-  storiesOf("DayListItem", module) //Initiates Storybook and registers our DayListItem component
+  storiesOf("DayListItem", module) 
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-  }) // Provides the default background color for our component
-  .add("Unselected", () => <DayListItem name="Monday" spots={5} />) // To define our stories, we call add() once for each of our test states to generate a story
+  }) 
+  .add("Unselected", () => <DayListItem name="Monday" spots={5} />) 
   .add("Selected", () => <DayListItem name="Monday" spots={5} selected />) 
   .add("Full", () => <DayListItem name="Monday" spots={0} />)
   .add("Clickable", () => (
-    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} /> // action() allows us to create a callback that appears in the actions panel when clicked
+    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} />
   ));
 
   const days = [
@@ -62,19 +62,7 @@ storiesOf("Button", module)
   },
 ];
 
-// storiesOf("DayList", module)
-//   .addParameters({
-//     backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
-//   })
-//   .add("Monday", () => (
-//     <DayList days={days} day={"Monday"} setDay={action("setDay")} />
-//   ))
-//   .add("Tuesday", () => (
-//     <DayList days={days} day={"Tuesday"} setDay={action("setDay")} />
-//   ))
-//   .add("Wednesday", () => (
-//       <DayList days={days} day={"Wednesday"} setDay={action("setDay")} />
-//   ));
+
   storiesOf("DayList", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
@@ -135,28 +123,6 @@ storiesOf("Button", module)
       { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
     ];
     
-    // storiesOf("InterviewerList", module)
-    //   .addParameters({
-    //     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-    //   })
-    //   .add("Initial", () => (
-    //     <InterviewerList
-    //       interviewers={interviewers}
-    //     />
-    //   ))
-    //   .add("Selected", () => (
-    //     <InterviewerList
-    //       interviewers={interviewers}
-    //       interviewer={3}
-    //     />
-    //   ))
-    //   .add("Clickable", () => (
-    //     <InterviewerList
-    //       interviewers={interviewers}
-    //       setInterviewer={action("setCurrentInterviewerID")}
-    //     />
-    //   ));
-
       storiesOf("InterviewerList", module)
       .addParameters({
         backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -227,7 +193,7 @@ storiesOf("Appointment", "Header", module)
   onCancel={action('onCancel')}
   />
   )
-  .add("Appointment Empty", () => (//using Fragment with it
+  .add("Appointment Empty", () => (
     <Fragment>
       <Appointment id={1} time="4pm" />
       <Appointment time="5pm" />

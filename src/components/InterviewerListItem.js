@@ -6,12 +6,6 @@ export default function InterviewerListItem(props) {
 
  const {id, name, avatar, selected, setInterviewer} = props;
  
-// const interviewer = {
-//   id: 1,
-//   name: "Sylvia Palmer",
-//   avatar: "https://i.imgur.com/LpaY82x.png"
-// };
-
 const interviewerClass = classNames('interviewers__item',{
   
   

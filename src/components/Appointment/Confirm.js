@@ -1,5 +1,5 @@
 import React from "react";
-import Button from 'components/Button';//need to define Buttons or we will receive error "Button not defined"
+import Button from 'components/Button';
 
 export default function Confirm(props) {
   const {message, onConfirm, onCancel, time, bookInterview} = props;

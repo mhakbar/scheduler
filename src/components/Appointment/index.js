@@ -18,16 +18,6 @@ export default function Appointment(props){
   const CONFIRM = 'CONFIRM';
   const EDIT = 'EDIT'
 
-  
-// const {time} = props;
-
-
-// let outputString = 'No appointmnet';
-
-// if (time) {
-//   outputString = `Appoint at ${time}.`
-// }
-
 
 console.log("props:",props)
 
@@ -56,17 +46,15 @@ const confirm = id => {
   return (
     <article className="appointment">
       <Header time={time} />
-      {/* {interview ? ( */}
+      
         {mode === EMPTY && <Empty onAdd={() => 
-          transition(CREATE)/*console.log("Clicked onAdd")*/} />}
+          transition(CREATE)} />}
         {mode === SHOW && (
         <Show
         {...interview}
         onEdit={() => transition(EDIT)}
         onDelete={() => confirm()}        
         />
-      // {/* ) : (
-      //   <Empty /> */}
       )}
       {mode === CREATE && (
         <Form 
@@ -95,7 +83,4 @@ const confirm = id => {
       )}
     </article>
   )
-
-// return <article className="appointment">{outputString}</article>
-
 };

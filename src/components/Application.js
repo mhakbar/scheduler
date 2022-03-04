@@ -66,7 +66,6 @@ export default function Application(props) {
     
     <main className="layout">
       <section className="sidebar">
-        {/* Replace this with the sidebar elements during the "Project Setup & Familiarity" activity. */}
         <img className="sidebar--centered" src="images/logo.png" alt="Interview Scheduler"/>
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
@@ -79,8 +78,6 @@ export default function Application(props) {
         </section>
       <section className="schedule">
         {parsedAppointment}
-        {/* <Appointment key="last" time="5pm" /> */}
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
       </section>
     </main>
   );

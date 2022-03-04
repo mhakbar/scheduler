@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 export default function InterviewerList(props) {
 
-  const {interviewers, /*interviewer*/ value, /*setInterviewer*/ onChange} = props;
+  const {interviewers, value, onChange} = props;
 
   const list = interviewers.map((item) => {
     return(

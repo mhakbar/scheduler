@@ -4,7 +4,7 @@ import DayListItem from "./DayListItem";
 
 export default function DayList(props) {
 
-  const {days, /*day*/ value, /*setDay*/ onChange} = props;
+  const {days, value, onChange} = props;
 
   const currentDay = days.map((dayOfWeek) => {
     return(

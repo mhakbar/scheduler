@@ -11,7 +11,7 @@ export default function useApplicationData() {
   const setDay = day => {
     setState({ ...state, day })
   }
-// state actions
+
 const bookInterview = (id, interview) => {
   const appointment = {
     ...state.appointments[id],
