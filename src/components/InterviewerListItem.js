@@ -17,10 +17,10 @@ return (
   <li onClick= {() => setInterviewer && setInterviewer(id)} className={interviewerClass}>
   <img
     className="interviewers__item-image"
-    src={props.avatar}
-    alt={props.name}
+    src={avatar}
+    alt={name}
   />
-  {props.name && props.selected }
+  {selected && name}
 </li>
 );
 
