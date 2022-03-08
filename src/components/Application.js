@@ -25,9 +25,9 @@ export default function Application(props) {
   dailyAppointments = getAppointmentsForDay(state, state.day);
   const dailyInterviewers = getInterviewersForDay(state, state.day);
 
-  const GET_DAYS = "http://localhost:8001/api/days";
-  const GET_APPOINTMENTS = "http://localhost:8001/api/appointments";
-  const GET_INTERVIEWERS = "http://localhost:8001/api/interviewers";
+  const GET_DAYS = "/api/days";
+  const GET_APPOINTMENTS = "/api/appointments";
+  const GET_INTERVIEWERS = "/api/interviewers";
   
 
 
@@ -78,6 +78,7 @@ export default function Application(props) {
         </section>
       <section className="schedule">
         {parsedAppointment}
+        <Appointment key="final" time="5pm"/>
       </section>
     </main>
   );
