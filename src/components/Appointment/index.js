@@ -7,7 +7,7 @@ import Form from './Form'
 import Status from './Status'
 import Confirm from './Confirm'
 import useVisualMode from "hooks/useVisualMode";
-import PropTypes from 'prop-types';
+import Error from './Error';
 
 
 export default function Appointment(props){
@@ -16,7 +16,10 @@ export default function Appointment(props){
   const CREATE = "CREATE";
   const SAVING = 'SAVING';
   const CONFIRM = 'CONFIRM';
-  const EDIT = 'EDIT'
+  const EDIT = 'EDIT';
+  const ERROR_SAVE = 'ERROR_SAVE';
+  const ERROR_DELETE = 'ERROR_DELETE';
+
 
 
 console.log("props:",props)
@@ -33,11 +36,15 @@ function save(name, interviewer) {
     interviewer,
   }
   transition(SAVING)
-  bookInterview(id, interview).then(() => transition(SHOW))
+  bookInterview(id, interview)
+  .then(() => transition(SHOW))
+  .catch(() => transition(ERROR_SAVE, true));
 }
 const remove = id => {
   transition(SAVING)
-  cancelInterview(id).then(() => transition(EMPTY))
+  cancelInterview(id)
+  .then(() => transition(EMPTY))
+  .catch(() => transition(ERROR_DELETE, true));
 }
 
 const confirm = id => {
@@ -81,6 +88,19 @@ const confirm = id => {
         student={interview.student} 
         interviewer={interview.interviewer.id} />
       )}
+      {mode === ERROR_SAVE && (
+        <Error
+          message={'Unable to save'}
+          onClose={() => transition(back)}
+        />
+      )}
+      {mode === ERROR_DELETE && (
+        <Error
+          message={'Unable to delete'}
+          onClose={() => transition(back)}
+        />
+        )}
+
     </article>
   )
 };
