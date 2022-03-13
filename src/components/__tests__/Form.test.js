@@ -62,7 +62,7 @@ describe('Form component', () => {
     const onSave = jest.fn();
     const { getByText, getByPlaceholderText, queryByText } =
       render(
-        <Form interviewers={interviewers} onSave={onSave} />
+        <Form interviewers={interviewers} interviewer={1} onSave={onSave} />
       );
 
     fireEvent.click(getByText('Save'));
@@ -88,8 +88,7 @@ describe('Form component', () => {
     expect(onSave).toHaveBeenCalledTimes(1);
     expect(onSave).toHaveBeenCalledWith(
       'Lydia Miller-Jones',
-      null,
-    );
+      1);
   });
 
   it('calls onCancel and resets the input field', () => {
