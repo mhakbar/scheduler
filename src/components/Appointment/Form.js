@@ -27,6 +27,12 @@ export default function Form(props) {
       if (student === "") {
         return setError('Student name cannot be blank') 
     }
+
+    console.log("Interviewer in form.js is :", interviewer);
+
+    if (!interviewer) {
+      return setError('Interviewer must be selected') 
+    }
     setError('');
     onSave(student, interviewer);
   };
