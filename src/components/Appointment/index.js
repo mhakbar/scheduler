@@ -21,9 +21,6 @@ export default function Appointment(props){
   const ERROR_DELETE = 'ERROR_DELETE';
 
 
-
-console.log("props:",props)
-
 const { interview, time, interviewers, bookInterview, id, cancelInterview } = props
 
 const { mode, transition, back } = useVisualMode(
