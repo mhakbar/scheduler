@@ -8,26 +8,25 @@ export default function useApplicationData() {
     appointments: {},
     interviewers: {},
   })
-  const setDay = day => {
-    setState({ ...state, day })
-  }
+
 
 const bookInterview = (id, interview) => {
   const appointment = {
     ...state.appointments[id],
     interview: { ...interview },
-  }
+  };
   const appointments = {
     ...state.appointments,
     [id]: appointment,
-  }
+  };
+ 
   const days = updateSpots(id, appointments);
 
   return axios
     .put(`/api/appointments/${id}`, { interview })
     .then(() => {
       setState(prev => {
-        return { ...prev, appointments }
+        return { ...prev, appointments, days }
       })
     })
 }
@@ -48,7 +47,7 @@ const cancelInterview = id => {
     .delete(`/api/appointments/${id}`)
     .then(() => {
       setState(prev => {
-        return { ...prev, appointments }
+        return { ...prev, appointments, days }
       })
     })
 }
@@ -58,7 +57,7 @@ const cancelInterview = id => {
 const updateSpots = (id, appointments) => {
   const day = state.days.filter((day, index) =>
     day.appointments.includes(id)
-  )[0]
+  )[0];
 
 
   day.spots = day.appointments.reduce((acc, apptID) => {
@@ -72,10 +71,14 @@ const updateSpots = (id, appointments) => {
   const dayIndex = day.id - 1
   days[dayIndex] = day
 
-  setState(prev => {
-    return { ...prev, days }
-  })
-}
+  return days;
+};
+
+
+  const setDay = day => {
+    setState({ ...state, day });
+  };
+
 
   return {
     state,
